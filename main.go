@@ -25,9 +25,10 @@ import (
 
 // Configuration keys
 const (
-	clientIDKey     = "clientid"
-	usersKey        = "users"
-	activityNameKey = "activityname"
+	clientIDKey             = "clientid"
+	usersKey                = "users"
+	activityNameKey         = "activityname"
+	activityNameTemplateKey = "activitynametemplate"
 )
 
 // Activity name display options
@@ -36,6 +37,7 @@ const (
 	activityNameTrack   = "Track"
 	activityNameArtist  = "Artist"
 	activityNameAlbum   = "Album"
+	activityNameCustom  = "Custom"
 )
 
 // userToken represents a user-token mapping from the config
@@ -155,6 +157,14 @@ func (p *discordPlugin) NowPlaying(input scrobbler.NowPlayingRequest) error {
 		activityName = input.Track.Album
 	case activityNameArtist:
 		activityName = input.Track.Artist
+	case activityNameCustom:
+		template, _ := pdk.GetConfig(activityNameTemplateKey)
+		if template != "" {
+			activityName = template
+			activityName = strings.ReplaceAll(activityName, "{track}", input.Track.Title)
+			activityName = strings.ReplaceAll(activityName, "{artist}", input.Track.Artist)
+			activityName = strings.ReplaceAll(activityName, "{album}", input.Track.Album)
+		}
 	}
 
 	// Send activity update
