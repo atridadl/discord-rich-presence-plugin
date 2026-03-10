@@ -173,10 +173,12 @@ func (p *discordPlugin) NowPlaying(input scrobbler.NowPlayingRequest) error {
 	case activityNameCustom:
 		template, _ := pdk.GetConfig(activityNameTemplateKey)
 		if template != "" {
-			activityName = template
-			activityName = strings.ReplaceAll(activityName, "{track}", input.Track.Title)
-			activityName = strings.ReplaceAll(activityName, "{artist}", input.Track.Artist)
-			activityName = strings.ReplaceAll(activityName, "{album}", input.Track.Album)
+			r := strings.NewReplacer(
+				"{track}", input.Track.Title,
+				"{artist}", input.Track.Artist,
+				"{album}", input.Track.Album,
+			)
+			activityName = r.Replace(template)
 		}
 	}
 
