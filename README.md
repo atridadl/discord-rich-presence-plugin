@@ -26,7 +26,7 @@ Based on the [Navicord](https://github.com/logixism/navicord) project.
 - Optional album art from [Cover Art Archive](https://coverartarchive.org) for MusicBrainz-tagged music
 - Optional image hosting via [uguu.se](https://uguu.se) for non-public Navidrome instances
 
-<img alt="Discord Rich Presence showing currently playing track with album art, artist, and playback progress" src="https://raw.githubusercontent.com/navidrome/discord-rich-presence-plugin/master/.github/screenshot.png">
+<img alt="Discord Rich Presence showing currently playing track with album art, artist, and playback progress" src="https://raw.githubusercontent.com/navidrome/discord-rich-presence-plugin/master/.github/ss-richpresence.webp">
 
 
 ## Installation
@@ -114,6 +114,8 @@ For album artwork to display in Discord, Discord needs to be able to access the 
 ## Configuration
 
 Access the plugin configuration in Navidrome: **Settings > Plugins > Discord Rich Presence**
+
+<img alt="Plugin configuration panel showing all available settings" src="https://raw.githubusercontent.com/navidrome/discord-rich-presence-plugin/master/.github/ss-config.webp">
 
 ### Configuration Fields
 
