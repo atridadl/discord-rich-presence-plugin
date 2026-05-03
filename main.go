@@ -274,10 +274,8 @@ func resolveActivityName(track scrobbler.TrackInfo) (string, int) {
 			)
 			return r.Replace(template), statusDisplayName
 		}
-		return "Navidrome", statusDisplayDetails
-	default:
-		return "Navidrome", statusDisplayDetails
 	}
+	return "Navidrome", statusDisplayDetails
 }
 
 func resolveSpotifyLinks(track scrobbler.TrackInfo) (string, string) {
